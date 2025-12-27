@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Civic Blue Theme - Trustworthy & Professional */
+    --background: 210 20% 98%;
+    --foreground: 220 30% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 12%;
+
+    /* Navy Blue Primary */
+    --primary: 220 60% 25%;
+    --primary-foreground: 210 20% 98%;
+
+    /* Light Blue Secondary */
+    --secondary: 210 30% 94%;
+    --secondary-foreground: 220 30% 20%;
+
+    --muted: 210 20% 92%;
+    --muted-foreground: 220 15% 45%;
+
+    /* Teal Accent */
+    --accent: 175 60% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 220 60% 25%;
+
+    --radius: 0.75rem;
+
+    /* Status Colors - SLA Indicators */
+    --status-success: 142 70% 45%;
+    --status-success-bg: 142 70% 95%;
+    --status-warning: 38 92% 50%;
+    --status-warning-bg: 38 92% 95%;
+    --status-danger: 0 72% 51%;
+    --status-danger-bg: 0 72% 96%;
+    --status-info: 205 85% 50%;
+    --status-info-bg: 205 85% 95%;
+
+    /* Gradients (Teal → Cyan) */
+    --gradient-primary: linear-gradient(135deg, #0ea5a4 0%, #06b6d4 100%);
+    --gradient-accent: linear-gradient(135deg, #059669 0%, #f59e0b 100%);
+    /* Hero: soft teal/cyan glow */
+    --gradient-hero: radial-gradient(1000px 500px at 10% 20%, rgba(14,165,164,0.08), transparent 20%), radial-gradient(800px 400px at 90% 80%, rgba(6,182,212,0.06), transparent 20%);
+    --gradient-card: linear-gradient(180deg, rgba(6,8,15,0.75), rgba(6,8,15,0.6));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 30% 12% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 30% 12% / 0.07), 0 2px 4px -2px hsl(220 30% 12% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(220 30% 12% / 0.08), 0 4px 6px -4px hsl(220 30% 12% / 0.05);
+    --shadow-glow: 0 0 30px hsl(185 80% 50% / 0.28);
+
+    --sidebar-background: 220 30% 15%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 175 60% 50%;
+    --sidebar-primary-foreground: 220 30% 12%;
+    --sidebar-accent: 220 30% 22%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 220 30% 25%;
+    --sidebar-ring: 175 60% 50%;
+  }
+
+  .dark {
+    --background: 220 30% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 30% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 30% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 175 60% 50%;
+    --primary-foreground: 220 30% 8%;
+
+    --secondary: 220 30% 18%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 220 25% 18%;
+    --muted-foreground: 210 15% 60%;
+
+    --accent: 175 60% 45%;
+    --accent-foreground: 220 30% 8%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 25% 22%;
+    --input: 220 25% 22%;
+    --ring: 175 60% 50%;
+
+    --sidebar-background: 220 30% 6%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 175 60% 50%;
+    --sidebar-primary-foreground: 220 30% 8%;
+    --sidebar-accent: 220 30% 15%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 220 30% 18%;
+    --sidebar-ring: 175 60% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/80 backdrop-blur-md;
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-countdown {
+    animation: countdown-pulse 1s ease-in-out infinite;
+  }
+
+  @keyframes countdown-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  /* Utility to hide images when needed (use by adding `hide-images` to a container) */
+  .hide-images img {
+    display: none !important;
+  }
+
+  /* Animated decorative blobs used on the login page */
+  .login-blobs {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .login-blob {
+    position: absolute;
+    filter: blur(40px) saturate(120%);
+    opacity: 0.85;
+    transform: translate3d(0,0,0);
+    animation: floaty 8s ease-in-out infinite alternate;
+  }
+
+  /* Deep Navy & Neon Cyan blobs for dark background */
+  .login-blob.b1 { width: 360px; height: 360px; left: -10%; top: -20%; background: radial-gradient(circle at 30% 30%, rgba(14,165,164,0.55) 0%, rgba(14,165,164,0.18) 60%, transparent 100%); mix-blend-mode: screen; }
+  .login-blob.b2 { width: 300px; height: 300px; right: -8%; top: -10%; background: radial-gradient(circle at 70% 30%, rgba(6,182,212,0.48) 0%, rgba(6,182,212,0.18) 50%, transparent 100%); animation-duration: 10s; mix-blend-mode: screen; }
+  .login-blob.b3 { width: 260px; height: 260px; left: 10%; bottom: -12%; background: radial-gradient(circle at 20% 80%, rgba(5,150,105,0.42) 0%, rgba(6,182,212,0.12) 60%, transparent 100%); animation-duration: 9s; mix-blend-mode: screen; }
+
+  @keyframes floaty {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-18px) scale(1.02); }
+    100% { transform: translateY(0) scale(1); }
+  }
+
+  /* Stronger text utility to improve legibility against bright/wash backgrounds */
+  .login-strong {
+    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+  }
+
+  .login-h1 {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+}
